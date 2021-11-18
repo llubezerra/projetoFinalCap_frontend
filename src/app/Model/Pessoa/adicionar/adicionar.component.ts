@@ -11,4 +11,8 @@ export class AdicionarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addPessoa(){
+    
+  }
+
 }
