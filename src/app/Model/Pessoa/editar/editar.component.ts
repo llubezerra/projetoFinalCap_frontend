@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServicoService } from 'src/app/Service/servico.service';
 import { Pessoa } from '../entidade/Pessoa';
 
@@ -9,7 +10,7 @@ import { Pessoa } from '../entidade/Pessoa';
 export class EditarComponent implements OnInit {
 
   pessoa: Pessoa = new Pessoa();
-  constructor(private service: ServicoService) { }
+  constructor(private service: ServicoService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -27,4 +28,11 @@ export class EditarComponent implements OnInit {
       console.log(this.pessoa);
   }
 
+  atualizar(){
+    this.service.updatePessoa(this.pessoa)
+    .subscribe(data =>{
+      this.pessoa = data;
+      this.router.navigate(['listar']);
+    })
+  }
 }
